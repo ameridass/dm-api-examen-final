@@ -24,22 +24,22 @@ namespace dm_ef_api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Assignament>>> GetAssignament()
         {
-          if (_context.Assignament == null)
+          if (_context.Assignment == null)
           {
               return NotFound();
           }
-            return await _context.Assignament.ToListAsync();
+            return await _context.Assignment.ToListAsync();
         }
 
         // GET: api/Assignaments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Assignament>> GetAssignament(int id)
         {
-          if (_context.Assignament == null)
+          if (_context.Assignment == null)
           {
               return NotFound();
           }
-            var assignament = await _context.Assignament.FindAsync(id);
+            var assignament = await _context.Assignment.FindAsync(id);
 
             if (assignament == null)
             {
@@ -85,11 +85,11 @@ namespace dm_ef_api.Controllers
         [HttpPost]
         public async Task<ActionResult<Assignament>> PostAssignament(Assignament assignament)
         {
-          if (_context.Assignament == null)
+          if (_context.Assignment == null)
           {
               return Problem("Entity set 'AssignamentContext.Assignament'  is null.");
           }
-            _context.Assignament.Add(assignament);
+            _context.Assignment.Add(assignament);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAssignament", new { id = assignament.Id }, assignament);
@@ -99,17 +99,17 @@ namespace dm_ef_api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAssignament(int id)
         {
-            if (_context.Assignament == null)
+            if (_context.Assignment == null)
             {
                 return NotFound();
             }
-            var assignament = await _context.Assignament.FindAsync(id);
+            var assignament = await _context.Assignment.FindAsync(id);
             if (assignament == null)
             {
                 return NotFound();
             }
 
-            _context.Assignament.Remove(assignament);
+            _context.Assignment.Remove(assignament);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -117,7 +117,7 @@ namespace dm_ef_api.Controllers
 
         private bool AssignamentExists(int id)
         {
-            return (_context.Assignament?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Assignment?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

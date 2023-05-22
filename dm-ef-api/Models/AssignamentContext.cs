@@ -10,6 +10,6 @@ namespace dm_ef_api.Models
 
         }
 
-        public virtual DbSet<Assignament> Assignament { get; set; } = null!;
+        public virtual DbSet<Assignament> Assignment { get; set; } = null!;
     }
 }
